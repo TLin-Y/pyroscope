@@ -1,6 +1,6 @@
 {
   "name": "profire-flamegraph",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Profire flamegraph visualization library based on pyroscope-io's flamegraph",
   "author": "Tianlin Yang",
   "repository": {
