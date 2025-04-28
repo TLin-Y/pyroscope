@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.4]([Release v0.0.4 · TLin-Y/pyroscope](https://github.com/TLin-Y/pyroscope/releases/tag/profire-0.0.4)) (2025-04-28)
+
+Bug Fixes
+
+* Fix sample rate ratio handling.
+* By default, use `ns` as the time unit in flamebearer input, `Byte` for RAM, and no unit (count) for others.
 
 ## [0.0.3]([Release 0.0.3 · TLin-Y/pyroscope](https://github.com/TLin-Y/pyroscope/releases/tag/profire-flamegraph)) (2025-04-28)
 
