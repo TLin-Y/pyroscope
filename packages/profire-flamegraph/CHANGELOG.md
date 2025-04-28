@@ -26,7 +26,7 @@ Features
 * adjustable & optimized units display [Better units for flamegraph by TLin-Y · Pull Request #4145 · grafana/pyroscope](https://github.com/grafana/pyroscope/pull/4145/commits/46aa53d7d8c53341155f037b6b91afecedaf997a)
 * sandwich view bug fixes
 
-## [0.0.1](https://github.com/TLin-Y/pyroscope/compare/@pyroscope/flamegraph@0.35.1...@profire/flamegraph@0.0.1) (2025-04-26)
+## [0.0.1](https://github.com/TLin-Y/pyroscope/compare/@pyroscope/flamegraph@0.35.1...profire-flamegraph@0.0.1) (2025-04-26)
 
 **Note:** Initial release based on @pyroscope/flamegraph v0.37.2 with minor modifications for Profire flamegraph features.
 
