@@ -1,7 +1,5 @@
 /* eslint-disable max-classes-per-file */
 import { Units } from '@pyroscope/models/src/units';
-import { time } from 'console';
-import { time } from 'console';
 
 export function getUnitAbbreviation(unit: string): string {
   switch (unit.toLowerCase()) {
@@ -33,36 +31,15 @@ export function prettyNum(nStr: string): string {
 export function formatNumber(
   samples: number,
   divider: number,
-  samples: number,
-  divider: number,
   unitStr: string,
   withUnits: boolean,
-  levels: [number, string][],
   levels: [number, string][],
   precision = 2,
   withS = false
 ): string {
   if (isNaN(samples) || !isFinite(samples) || samples === 0) {
-  if (isNaN(samples) || !isFinite(samples) || samples === 0) {
     return '0';
   }
-  const n = samples / divider;
-  const absN = Math.abs(n);
-  if (absN < 0.01) {
-    const curUnitLevel = levels.findIndex(([_, name]) => name === unitStr);
-    if (curUnitLevel === -1 || curUnitLevel === 0) {
-      return '< 0.01';
-    }
-    for (let i = curUnitLevel - 1; i >= 0; i--) {
-      const [smallerLevel, smallerUnit] = levels[i];
-      const converted = samples / smallerLevel;
-      if (Math.abs(converted) >= 0.01) {
-        const numStr = prettyNum(converted.toFixed(precision));
-        return `${numStr} ${smallerUnit}${
-          withS && !smallerUnit.endsWith('s') ? 's' : ''
-        }`;
-      }
-    }
   const n = samples / divider;
   const absN = Math.abs(n);
   if (absN < 0.01) {
@@ -86,10 +63,6 @@ export function formatNumber(
   const cleanNumStr = prettyNum(n.toFixed(precision));
 
   const res = withUnits
-    ? `${cleanNumStr} ${unitStr}${
-        // eslint-disable-next-line no-nested-ternary
-        withS && !unitStr.endsWith('s') ? (n === 1 ? '' : 's') : ''
-      }`
     ? `${cleanNumStr} ${unitStr}${
         // eslint-disable-next-line no-nested-ternary
         withS && !unitStr.endsWith('s') ? (n === 1 ? '' : 's') : ''
@@ -125,12 +98,6 @@ export function getLevelOrDefault(
   defaultFn: () => void,
   state: { divider: number; suffix: string }
 ) {
-  if (unitLevel > 0 && unitLevel <= levels.length) {
-    const [div, label] = levels[unitLevel - 1];
-    state.divider = div;
-    state.suffix = label;
-  } else {
-    defaultFn();
   if (unitLevel > 0 && unitLevel <= levels.length) {
     const [div, label] = levels[unitLevel - 1];
     state.divider = div;
@@ -242,7 +209,6 @@ export class DurationFormatter extends Formatter {
 
     const tmpState = { divider: this.divider, suffix: this.suffix };
     getLevelOrDefault(unitLevel, timeLevels, f, tmpState);
-    getLevelOrDefault(unitLevel, timeLevels, f, tmpState);
     if (unitLevel !== 0) {
       this.divider = tmpState.divider;
       this.suffix = tmpState.suffix;
@@ -299,7 +265,6 @@ export class ObjectsFormatter extends Formatter {
 
     const tmpState = { divider: this.divider, suffix: this.suffix };
     getLevelOrDefault(unitLevel, objectLevels, f, tmpState);
-    getLevelOrDefault(unitLevel, objectLevels, f, tmpState);
     if (unitLevel !== 0) {
       this.divider = tmpState.divider;
       this.suffix = tmpState.suffix;
@@ -314,24 +279,9 @@ export class ObjectsFormatter extends Formatter {
       withUnits,
       objectLevels
     );
-    return formatNumber(
-      samples,
-      this.divider,
-      this.suffix,
-      withUnits,
-      objectLevels
-    );
   }
 
   formatPrecise(samples: number, withUnits = true) {
-    return formatNumber(
-      samples,
-      this.divider,
-      this.suffix,
-      withUnits,
-      objectLevels,
-      5
-    );
     return formatNumber(
       samples,
       this.divider,
@@ -386,7 +336,6 @@ export class BytesFormatter {
 
     const tmpState = { divider: this.divider, suffix: this.suffix };
     getLevelOrDefault(unitLevel, bytesLevels, f, tmpState);
-    getLevelOrDefault(unitLevel, bytesLevels, f, tmpState);
     if (unitLevel !== 0) {
       this.divider = tmpState.divider;
       this.suffix = tmpState.suffix;
@@ -402,25 +351,9 @@ export class BytesFormatter {
       bytesLevels,
       2
     );
-    return formatNumber(
-      samples,
-      this.divider,
-      this.suffix,
-      withUnits,
-      bytesLevels,
-      2
-    );
   }
 
   formatPrecise(samples: number, withUnits = true) {
-    return formatNumber(
-      samples,
-      this.divider,
-      this.suffix,
-      withUnits,
-      bytesLevels,
-      5
-    );
     return formatNumber(
       samples,
       this.divider,

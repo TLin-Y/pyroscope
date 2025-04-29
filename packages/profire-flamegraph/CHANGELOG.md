@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5]([Release v0.0.5 · TLin-Y/pyroscope](https://github.com/TLin-Y/pyroscope/releases/tag/profire-0.0.5)) (2025-04-29)
+
 ## [0.0.4]([Release v0.0.4 · TLin-Y/pyroscope](https://github.com/TLin-Y/pyroscope/releases/tag/profire-0.0.4)) (2025-04-28)
 
 Bug Fixes
