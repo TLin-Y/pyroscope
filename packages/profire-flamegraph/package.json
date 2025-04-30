@@ -1,6 +1,6 @@
 {
   "name": "profire-flamegraph",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Profire flamegraph visualization library based on pyroscope-io's flamegraph",
   "author": "Tianlin Yang",
   "repository": {
@@ -8,8 +8,7 @@
     "url": "https://github.com/TLin-Y/pyroscope.git"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "main": "dist/index.node.js",
   "browser": "dist/index.js",
